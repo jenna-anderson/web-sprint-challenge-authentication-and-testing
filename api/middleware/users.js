@@ -1,4 +1,4 @@
-const Users = require('./auth-model')
+const Users = require('../auth/auth-model')
 
 function checkPayloadBody(req, res, next) {
     const { username, password } = req.body
@@ -20,6 +20,8 @@ async function checkUsernameExists (req, res, next) {
             status: 422,
             message: "username taken"
         })
+    } else {
+        next()
     }
 }
 

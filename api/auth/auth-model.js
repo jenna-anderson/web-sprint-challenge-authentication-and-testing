@@ -11,7 +11,7 @@ async function add(user) {
 }
 
 async function findByUsername(username) {
-    const user = await db('users').where('username', username)
+    const [user] = await db('users').where('username', username)
     return user
 }
 
