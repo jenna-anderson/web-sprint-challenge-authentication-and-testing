@@ -62,6 +62,12 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+    Sessions store a user's session id on the server and it is automatically sent back and forth between the client and the server on a cookie. 
+    With JSON web tokens (JWT) the server creates a JWT with a secret and sends it to the client where it is stored in local storage on the browser. It must be sent in the request header for future requests for the server to validate it. 
+    Main difference is the session id is stored on the server while the JWT isn't - its signature is checked and user info deconstructed when sent back to the server
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+    `bcryptjs` hashes a users password so it is never stored in plain text. It uses salted hashing (a salt is added to it before hashing) so even users with the same password will have different hashes, preventing attacks with a rainbow table. 
 3. How are unit tests different from integration and end-to-end testing?
+    Unit tests test individual, independent pieces of code (e.g. a single function, a single class) while integration tests test how multiple pieces work together (e.g. testing endpoints involves routers, middleware, model functions, etc.). End-to-end testing test a user's entire experience/journey through the app.
 4. How does _Test Driven Development_ change the way we write applications and tests?
+    In TDD you write the tests before writing the app code. This can help focus what exactly we want the app to do before writing the code and helps make sure any changes later don't break existing tests.
