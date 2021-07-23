@@ -12,10 +12,15 @@ function checkPayloadBody(req, res, next) {
     }
 }
 
-function checkUsernameExists(req, res, next) {
+async function checkUsernameExists (req, res, next) {
     const { username } = req.body
-    // complete later
-    next()
+    const exists = await Users.findByUsername(username)
+    if(exists) {
+        next({
+            status: 422,
+            message: "username taken"
+        })
+    }
 }
 
 module.exports = {

@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const Users = require('./auth-model')
 const { checkPayloadBody, checkUsernameExists } = require('./auth-middleware')
 
-router.post('/register', checkPayloadBody, async (req, res, next) => {
+router.post('/register', checkPayloadBody, checkUsernameExists, async (req, res, next) => {
   let user = req.body
   const rounds = process.env.BCRYPT_ROUNDS || 8
   const hash = bcrypt.hashSync(user.password, rounds)
